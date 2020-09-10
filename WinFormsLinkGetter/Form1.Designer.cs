@@ -130,6 +130,7 @@
             // checkedListBoxLinks
             // 
             this.checkedListBoxLinks.FormattingEnabled = true;
+            this.checkedListBoxLinks.HorizontalScrollbar = true;
             this.checkedListBoxLinks.Location = new System.Drawing.Point(20, 501);
             this.checkedListBoxLinks.Name = "checkedListBoxLinks";
             this.checkedListBoxLinks.Size = new System.Drawing.Size(733, 119);
