@@ -55,6 +55,9 @@ namespace WinFormsLinkGetter
         // Step 1: Load up the target page in the app.
         private void buttonLoadURL_Click(object sender, EventArgs e)
         {
+            checkedListBoxLinks.Items.Clear();
+            labelLinkCount.Text = "";
+
             if (string.IsNullOrEmpty(textBoxURL.Text))
             {
                 MessageBox.Show(this,
@@ -149,7 +152,11 @@ namespace WinFormsLinkGetter
                         var index = strValueLink.IndexOf('#');
                         if ((index > 0) && strValueLink.StartsWith(textBoxURL.Text))
                         {
-                            checkedListBoxLinks.Items.Add(strValueLink);
+                            checkedListBoxLinks.Items.Add(new LinkItem()
+                            {
+                                linkName = elementLink.CachedName,
+                                linkURL = strValueLink
+                            });
                         }
                     }
                 }
@@ -196,19 +203,24 @@ namespace WinFormsLinkGetter
                     {
                         if (checkedListBoxLinks.GetItemChecked(index))
                         {
-                            string strValueLink = checkedListBoxLinks.Items[index].ToString();
+                            var item = checkedListBoxLinks.Items[index] as LinkItem;
+                            
+                            string strValueLink = item.linkURL;
 
-                            var termIndex = strValueLink.IndexOf('#');
-                            if (termIndex > 0)
-                            {
-                                string term = strValueLink.Substring(termIndex + 1);
+                            // Use the friendly name, not the link name.
+                            string term = item.linkName;
 
-                                string answer = "For details on " + term +
-                                    ", please visit [" + term + "](" +
-                                    strValueLink + ")";
+                            //var termIndex = strValueLink.IndexOf('#');
+                            //if (termIndex > 0)
+                            //{
+                            //    term = strValueLink.Substring(termIndex + 1);
+                            //}
 
-                                file.WriteLine(term + "\t" + answer);
-                            }
+                            string answer = "For details on " + term +
+                                ", please visit [" + term + "](" +
+                                strValueLink + ")";
+
+                            file.WriteLine(term + "\t" + answer);
                         }
                     }
                 }
@@ -232,5 +244,12 @@ namespace WinFormsLinkGetter
                 checkedListBoxLinks.SetItemChecked(i, setChecked);
             }
         }
+    }
+
+    public class LinkItem
+    {
+        public string linkName;
+        public string linkURL;
+        public override string ToString() { return linkURL; }
     }
 }

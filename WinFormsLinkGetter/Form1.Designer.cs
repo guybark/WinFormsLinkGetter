@@ -47,7 +47,7 @@
             // buttonClose
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.Location = new System.Drawing.Point(599, 696);
+            this.buttonClose.Location = new System.Drawing.Point(628, 696);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(148, 56);
             this.buttonClose.TabIndex = 11;
@@ -95,7 +95,7 @@
             // 
             this.textBoxURL.Location = new System.Drawing.Point(68, 156);
             this.textBoxURL.Name = "textBoxURL";
-            this.textBoxURL.Size = new System.Drawing.Size(659, 26);
+            this.textBoxURL.Size = new System.Drawing.Size(706, 26);
             this.textBoxURL.TabIndex = 2;
             // 
             // webBrowserPage
@@ -104,7 +104,7 @@
             this.webBrowserPage.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserPage.Name = "webBrowserPage";
             this.webBrowserPage.ScriptErrorsSuppressed = true;
-            this.webBrowserPage.Size = new System.Drawing.Size(727, 135);
+            this.webBrowserPage.Size = new System.Drawing.Size(754, 135);
             this.webBrowserPage.TabIndex = 4;
             // 
             // buttonLoadURL
@@ -133,7 +133,7 @@
             this.checkedListBoxLinks.HorizontalScrollbar = true;
             this.checkedListBoxLinks.Location = new System.Drawing.Point(20, 501);
             this.checkedListBoxLinks.Name = "checkedListBoxLinks";
-            this.checkedListBoxLinks.Size = new System.Drawing.Size(733, 119);
+            this.checkedListBoxLinks.Size = new System.Drawing.Size(754, 119);
             this.checkedListBoxLinks.TabIndex = 7;
             // 
             // labelLinkCount
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 771);
+            this.ClientSize = new System.Drawing.Size(800, 771);
             this.Controls.Add(this.labelInstructions);
             this.Controls.Add(this.labelURL);
             this.Controls.Add(this.textBoxURL);
