@@ -208,19 +208,38 @@ namespace WinFormsLinkGetter
                             string strValueLink = item.linkURL;
 
                             // Use the friendly name, not the link name.
-                            string term = item.linkName;
+                            string question = item.linkName;
 
-                            //var termIndex = strValueLink.IndexOf('#');
-                            //if (termIndex > 0)
-                            //{
-                            //    term = strValueLink.Substring(termIndex + 1);
-                            //}
-
-                            string answer = "For details on " + term +
-                                ", please visit [" + term + "](" +
+                            string answer = "For details on " + question +
+                                ", please visit [" + question + "](" +
                                 strValueLink + ")";
 
-                            file.WriteLine(term + "\t" + answer);
+                            bool useName = (question.Trim().Length > 1);
+
+                            // Ignore links with one character Names.
+                            if (useName)
+                            {
+                                file.WriteLine(question + "\t" + answer);
+                            }
+
+                            // While we're here, add alternate phrasing based on the link itself.
+                            // This will result in each Q&A pair having two forms of the question.
+                            var termIndex = strValueLink.IndexOf('#');
+                            if (termIndex > 0)
+                            {
+                                var alternateQuestion = strValueLink.Substring(termIndex + 1);
+                                if (alternateQuestion.ToLower() != question.ToLower())
+                                {
+                                    string usableQuestion = (useName ? question : alternateQuestion);
+
+                                    answer = "For details on " +
+                                        usableQuestion +
+                                        ", please visit [" + usableQuestion + "](" +
+                                        strValueLink + ")";
+
+                                    file.WriteLine(alternateQuestion + "\t" + answer);
+                                }
+                            }
                         }
                     }
                 }
